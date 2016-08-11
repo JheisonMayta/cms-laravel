@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 
 use CMSlaravel\Http\Requests;
 
+use CMSlaravel\Post;
+
 class HomeController extends Controller
 {
     public function index()
     {
-      return view('home');
+      $posts = Post::with('author')->get();
+      return view('home', ['posts' => $posts]);
     }
 }

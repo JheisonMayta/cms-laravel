@@ -22,6 +22,7 @@ $factory->define(CMSlaravel\User::class, function (Faker\Generator $faker) {
 
 $factory->define(CMSlaravel\Post::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name
+        'title' => $faker->sentence(),
+        'body' => $faker->paragraph()
     ];
 });
