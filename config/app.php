@@ -155,6 +155,7 @@ return [
         CMSlaravel\Providers\AuthServiceProvider::class,
         CMSlaravel\Providers\EventServiceProvider::class,
         CMSlaravel\Providers\RouteServiceProvider::class,
+        CMSlaravel\Providers\ViewComposerServiceProvider::class,
 
     ],
 

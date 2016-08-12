@@ -11,9 +11,36 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::group(['middleware' => 'auth'], function () {
 
-Route::get('/posts/{id}', [
-  'uses' => 'PostsController@show',
-  'as' => 'post_show_path'
+  Route::get('/', 'HomeController@index');
+
+  Route::get('/posts/{id}', [
+    'uses' => 'PostsController@show',
+    'as' => 'post_show_path'
+  ]);
+
+});
+
+Route::group(['prefix' => 'api'], function () {
+
+  Route::get('/', function(){
+    return 'Hola soy tu API';
+  });
+
+});
+
+Route::get('auth/login', [
+  'uses' => 'AuthController@index',
+  'as' => 'auth_show_path'
+]);
+
+Route::post('auth/login', [
+  'uses' => 'AuthController@store',
+  'as' => 'auth_store_path'
+]);
+
+Route::get('auth/logout', [
+  'uses' => 'AuthController@destroy',
+  'as' => 'auth_destroy_path'
 ]);
